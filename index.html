@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Đoán tên người yêu tương lai</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    .input-box { background-color: lightgreen; border: 2px solid green; width: 300px; margin: auto; padding: 15px; border-radius: 8px; }
+    .output-box { background-color: pink; border: 2px solid red; width: 340px; margin: 20px auto; padding: 15px; border-radius: 8px; font-weight: bold; color: red; font-size: 18px; }
+    button { margin-top: 10px; padding: 8px 16px; font-size: 16px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; cursor: pointer; }
+    button:hover { background-color: #45a049; }
+  </style>
+</head>
+<body>
+
+  <h2>🔮 Đoán tên người yêu tương lai</h2>
+
+  <div class="input-box">
+    <label>Tên: <input type="text" id="inputName" /></label><br><br>
+    <label>Cung: <input type="text" id="inputSign" /></label><br><br>
+    <label>Tuổi: <input type="number" id="inputAge" /></label><br><br>
+    <label>Sở thích: <input type="text" id="inputHobby" /></label><br>
+    <button id="btnGuess">Đoán ngay</button>
+  </div>
+
+  <div class="output-box" id="output"></div>
+
+  <script>
+    function normalizeName(s) {
+      if (!s) return "";
+      try { s = s.normalize('NFC'); } catch (e) {}
+      return s.replace(/\s+/g, ' ').trim();
+    }
+
+    document.getElementById('btnGuess').addEventListener('click', function () {
+      const raw = document.getElementById('inputName').value;
+      const name = normalizeName(raw);
+      const output = document.getElementById('output');
+
+      if (name === "Trần Hương Giang") {
+        output.innerText = "Người yêu tương lai của bạn là: Vũ Quang Minh 💖";
+      } else if (name === "Vũ Quang Minh") {
+        output.innerText = "Người yêu tương lai của bạn là: Trần Hương Giang 💖";
+      } else {
+        output.innerText = "Shhhhhhhh 🤫";
+      }
+    });
+  </script>
+
+</body>
+</html>
